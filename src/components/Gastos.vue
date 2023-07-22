@@ -9,6 +9,8 @@
     import IconoSalud from '../assets/img/icono_salud.svg'
     import IconoSuscripciones from '../assets/img/icono_suscripciones.svg'
 
+    
+
     const diccionarioIconos = {
         ahorro : IconoAhorro,
         comida : IconoComida,
@@ -25,6 +27,8 @@
             required: true
         }
     })
+
+    defineEmits(['selecccionar-gasto'])
 </script>
 
 <template>
@@ -37,7 +41,10 @@
             >
             <div class="detalles">
                 <p class="categoria">{{ gasto.categoria }}</p>
-                <p class="nombre">{{ gasto.nombre }}</p>
+                <p 
+                    class="nombre"
+                    @click="$emit('selecccionar-gasto', gasto.id)"
+                > {{ gasto.nombre }}</p>
                 <p class="fecha">
                     Fecha:
                    <span>{{formatearFecha(gasto.fecha) }}</span> 
